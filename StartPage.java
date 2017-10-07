@@ -1,6 +1,6 @@
-package javaFx_projects;
-
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -48,6 +48,15 @@ public class StartPage extends Application{
 		GridPane.setConstraints(start, 1, 15);
 		
 		grid.getChildren().addAll(players, playerInput, matrixSize, m, x, n, start);
+		
+		start.setOnAction(new EventHandler<ActionEvent>() {
+			
+			@Override
+			public void handle(ActionEvent event) {
+				grid.getChildren().removeAll(players, playerInput, matrixSize, m, x, n, start);
+				
+			}
+		});
 		
 		Scene scene=new Scene(grid, 350, 300);
 		stage.setScene(scene);
