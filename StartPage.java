@@ -11,6 +11,8 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class StartPage extends Application{
+	
+	static int numberOfPlayers=0, mSize=0, nSize=0;
 
 	public static void main(String[] args) {
 		launch(args);
@@ -27,19 +29,19 @@ public class StartPage extends Application{
 		//Number of Players
 		Label players=new Label("Enter the number of Players:");
 		GridPane.setConstraints(players, 0, 7);
-		ComboBox playerInput=new ComboBox(); 
+		ComboBox<Integer> playerInput=new ComboBox<>(); 
 		playerInput.getItems().addAll(2,3,4,5,6,7,8);
 		GridPane.setConstraints(playerInput, 1, 7);
 		
 		//Matrix Size
 		Label matrixSize=new Label("Enter the Matrix Size:");
 		GridPane.setConstraints(matrixSize, 0, 10);
-		ComboBox m=new ComboBox();
+		ComboBox<Integer> m=new ComboBox<>();
 		m.getItems().addAll(9,10,11,12,13,14,15);
 		GridPane.setConstraints(m, 1, 10);
 		Label x=new Label("x");
 		GridPane.setConstraints(x, 2, 10);
-		ComboBox n=new ComboBox();
+		ComboBox<Integer> n=new ComboBox<>();
 		n.getItems().addAll(6,7,8,9,10);
 		GridPane.setConstraints(n, 3, 10);
 		
@@ -53,8 +55,10 @@ public class StartPage extends Application{
 			
 			@Override
 			public void handle(ActionEvent event) {
-				grid.getChildren().removeAll(players, playerInput, matrixSize, m, x, n, start);
-				
+				numberOfPlayers=playerInput.getValue();
+				mSize=m.getValue();
+				nSize=n.getValue();
+				grid.getChildren().removeAll(players, playerInput, matrixSize, m, x, n, start);				
 			}
 		});
 		
@@ -62,6 +66,7 @@ public class StartPage extends Application{
 		stage.setScene(scene);
 		stage.setTitle("First Page");
 		stage.show();
+
 	}
 
 }
