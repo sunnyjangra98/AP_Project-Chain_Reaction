@@ -1,4 +1,3 @@
-import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -6,21 +5,15 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-public class StartPage extends Application{
+public class StartPage{
 	
 	static int numberOfPlayers=0, mSize=0, nSize=0;
 
-	public static void main(String[] args) {
-		launch(args);
-
-	}
-	
-	@Override
-	public void start(Stage stage) {
+	//Not start but 'Start'
+	public void Start(Stage stage) {
 		GridPane grid=new GridPane();
 		grid.setPadding(new Insets(10, 10, 10, 10));
 		grid.setVgap(8);
