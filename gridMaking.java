@@ -297,10 +297,9 @@ public class gridMaking extends Application{
 				matrix[x-1][y-1]=0;
 				addMoreBalls(matrix, x+1, y, index);
 				addMoreBalls(matrix, x, y+1, index);
-				if (matrix[x][y-1]>2)
-					split(matrix, x+1, y, index);
-				if (matrix[x-1][y]>2)
-					split(matrix, x, y+1, index);
+				
+				split(matrix, x+1, y, index);
+				split(matrix, x, y+1, index);
 			}
 			else if (x==GRID_SIZE && y==GRID_SIZE) {//RB
 				matrix[x-2][y-1]+=1;
@@ -310,10 +309,9 @@ public class gridMaking extends Application{
 				matrix[x-1][y-1]=0;
 				addMoreBalls(matrix, x-1, y, index);
 				addMoreBalls(matrix, x, y-1, index);
-				if (matrix[x-2][y-1]>2)
-					split(matrix, x-1, y, index);
-				if (matrix[x-1][y-2]>2)
-					split(matrix, x, y-1, index);
+				
+				split(matrix, x-1, y, index);
+				split(matrix, x, y-1, index);
 			}
 			else if (x==1 && y==GRID_SIZE) {        //LB
 				matrix[x-1][y-2]+=1;
@@ -323,10 +321,9 @@ public class gridMaking extends Application{
 				matrix[x-1][y-1]=0;
 				addMoreBalls(matrix, x, y-1, index);
 				addMoreBalls(matrix, x+1, y, index);
-				if (matrix[x-1][y-2]>2)
-					split(matrix, x, y-1, index);
-				if (matrix[x][y-1]>2)
-					split(matrix, x+1, y, index);
+
+				split(matrix, x, y-1, index);
+				split(matrix, x+1, y, index);
 			}
 			else if (x==GRID_SIZE && y==1) {        //RT
 				matrix[x-2][y-1]+=1;
@@ -336,10 +333,9 @@ public class gridMaking extends Application{
 				matrix[x-1][y-1]=0;
 				addMoreBalls(matrix, x-1, y, index);
 				addMoreBalls(matrix, x, y+1, index);
-				if (matrix[x-2][y-1]>2)
-					split(matrix, x-1, y, index);
-				if (matrix[x-1][y]>2)
-					split(matrix, x, y+1, index);
+
+				split(matrix, x-1, y, index);
+				split(matrix, x, y+1, index);
 			}
 		}
 		else if (checkMatrixEdge(x, y) && matrix[x-1][y-1]>2) {
@@ -353,12 +349,10 @@ public class gridMaking extends Application{
 				addMoreBalls(matrix, x-1, y, index);
 				addMoreBalls(matrix, x+1, y, index);
 				addMoreBalls(matrix, x, y+1, index);
-				if (matrix[x-2][y-1]>2)
-					split(matrix, x-1, y, index);
-				if (matrix[x][y-1]>2)
-					split(matrix, x+1, y, index);
-				if (matrix[x-1][y]>4)
-					split(matrix, x, y+1, index);
+				
+				split(matrix, x-1, y, index);
+				split(matrix, x+1, y, index);
+				split(matrix, x, y+1, index);
 			}
 			else if (x==1 && y>1 && y<GRID_SIZE-1) {//L
 				matrix[x-1][y-2]+=1;
@@ -370,12 +364,10 @@ public class gridMaking extends Application{
 				addMoreBalls(matrix, x, y-1, index);
 				addMoreBalls(matrix, x+1, y, index);
 				addMoreBalls(matrix, x, y+1, index);
-				if (matrix[x-1][y-2]>2)
-					split(matrix, x, y-1, index);
-				if (matrix[x][y-1]>4)
-					split(matrix, x+1, y, index);
-				if (matrix[x-1][y]>2)
-					split(matrix, x, y+1, index);
+
+				split(matrix, x, y-1, index);
+				split(matrix, x+1, y, index);
+				split(matrix, x, y+1, index);
 			}
 			else if (x>1 && x<GRID_SIZE-1 && y==GRID_SIZE) {//B
 				matrix[x-2][y-1]+=1;
@@ -387,12 +379,10 @@ public class gridMaking extends Application{
 				addMoreBalls(matrix, x-1, y, index);
 				addMoreBalls(matrix, x, y-1, index);
 				addMoreBalls(matrix, x+1, y, index);
-				if (matrix[x-2][y-1]>2)
-					split(matrix, x-1, y, index);
-				if (matrix[x-1][y-2]>4)
-					split(matrix, x, y-1, index);
-				if (matrix[x][y-1]>2)
-					split(matrix, x+1, y, index);
+
+				split(matrix, x-1, y, index);
+				split(matrix, x, y-1, index);
+				split(matrix, x+1, y, index);
 			}
 			else if (x==GRID_SIZE && y>1 && y<GRID_SIZE-1) {//R
 				matrix[x-2][y-1]+=1;
@@ -404,15 +394,13 @@ public class gridMaking extends Application{
 				addMoreBalls(matrix, x-1, y, index);
 				addMoreBalls(matrix, x, y-1, index);
 				addMoreBalls(matrix, x, y+1, index);
-				if (matrix[x-2][y-1]>4)
-					split(matrix, x-1, y, index);
-				if (matrix[x-1][y-2]>2)
-					split(matrix, x, y-1, index);
-				if (matrix[x-1][y]>2)
-					split(matrix, x, y+1, index);
+
+				split(matrix, x-1, y, index);
+				split(matrix, x, y-1, index);
+				split(matrix, x, y+1, index);
 			}
 		}
-		else {
+		else if (matrix[x-1][y-1]>4){
 			matrix[x-1][y-2]+=1;
 			matrix[x-1][y]+=1;
 			matrix[x-2][y-1]+=1;
@@ -424,6 +412,11 @@ public class gridMaking extends Application{
 			addMoreBalls(matrix, x, y+1, index);
 			addMoreBalls(matrix, x-1, y, index);
 			addMoreBalls(matrix, x+1, y, index);
+			
+			split(matrix, x, y-1, index);
+			split(matrix, x, y+1, index);
+			split(matrix, x-1, y, index);
+			split(matrix, x+1, y, index);
 		}
 	}
 
